@@ -39,7 +39,7 @@ jobs:
       
       # Runs a set of commands using the runners shell
       - name: Build and push
-        id:   build_build
+        id:   docker_build
         uses: docker/build-push-action@v2
         with:
           context: ./python-docker
@@ -49,4 +49,4 @@ jobs:
           tags:    ${{ secrets.DOCKER_HUB_USERNAME }}/flask-app:latest
           
       - name: Image Digest
-        run:  echo ${{ steps.docker_build.outputs.digest }}
+        run:  echo ${{ steps.docker_build.outputs.tags }}
