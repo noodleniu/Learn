@@ -56,9 +56,9 @@ jobs:
           file:    ./python-docker/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push:    true
-          tags:    ${{ secrets.DOCKER_HUB_USERNAME }}/flask-app:latest
+          tags:    ${{ secrets.DOCKER_HUB_USERNAME }}/flask-app-new:latest
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to:   type=local,dest=/tmp/.buildx-cache
           
       - name: Image Digest
-        run:  echo ${{ steps.docker_build.outputs.tags }}
+        run:  echo ${{ steps.docker_build.outputs.imageid }}
